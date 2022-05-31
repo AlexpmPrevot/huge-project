@@ -9,6 +9,14 @@ require 'faker'
 
 User.destroy_all
 
+User.create(nickname: 'Admin',
+  email: 'admin@huge.com',
+  password: 'secret',
+  avatar_color: 'green',
+  score: 1000,
+  city: '176 cours Balguerie Stuttenberg 33000 Bordeaux',
+  bio: Faker::Lorem.sentence(word_count: 10))
+
 6.times do
   bio = Faker::Lorem.sentence(word_count: 10)
   nickname = Faker::Sports::Basketball.player

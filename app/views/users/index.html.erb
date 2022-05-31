@@ -1,7 +1,8 @@
 
 <h1>Users#index</h1>
 <p>Find me in app/views/users/index.html.erb</p>
-<div class="container mx-auto mt-3">
+
+<div class="container mx-auto mt-3" style="position: relative;">
   <div class="row">
     <% @users.each do |user| %>
         <div class="col-md-4 mt-3">
@@ -15,18 +16,28 @@
                 </div>
                 <p class="card-text"><%= user.bio %></p>
                 <%= link_to 'Hug request', new_hug_path(user), class: 'btn btn-success mb-2' %>
-                <p class="card-text">Online / Online x minutes ago</p>
+                <% if user.logged_in? %>
+                  <p class="card-text">Online</p>
+                <% elsif user.last_request_at == nil%>
+                  <p class="card-text">Waiting for 1st connexion</p>
+                <% else %>
+                  <p class="card-text">Online <%= ((Time.now - (user.last_request_at))/60).round %> minutes ago</p>
+                <% end %>
               </div>
           </div>
         </div>
     <% end %>
   </div>
-</div>
 
-<div class="card p-3 m-3">
-<div style="width: 100%; height: 600px;"
-  data-controller="mapbox"
-  data-mapbox-markers-value="<%= @markers.to_json %>"
-  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</div>
+  <div class="card p-3 m-3" id="map">
+    <div style="width: 100%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 
+  <div class="map-icon">
+    <a href="/users/#map"><i class="fa-solid fa-map-location"></i></a>
+  </div>
+</div>
