@@ -13,6 +13,9 @@
   </head>
 
   <body>
+  <% if current_user %>
+    <div data-controller="geoloc" data-geoloc-userid-value="<% current_user.id %>"></div>
+  <% end %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
