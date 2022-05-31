@@ -1,0 +1,20 @@
+.map-icon {
+
+  position: absolute;
+  position: fixed;
+  right: -40px;
+  top: 48vh;
+  color: #3D3D3D;
+  font-size: 35px;
+  z-index: 1000;
+  border: 2px solid #3D3D3D;
+  padding: 15px;
+  padding-right: 50px;
+  border-radius: 50% 0 0 50%;
+  background-color: #FF6333;
+
+}
+
+.map-icon a {
+  color: inherit;
+}
