@@ -15,7 +15,7 @@
                 <% end %>
                 </div>
                 <p class="card-text"><%= user.bio %></p>
-                <%= link_to 'Hug request', new_hug_path(user), class: 'btn btn-success mb-2' %>
+                <%= link_to 'Hug request', hugs_path(user_id: user.id), method: :post, class: 'btn btn-success mb-2' %>
                 <% if user.logged_in? %>
                   <p class="card-text">Online</p>
                 <% elsif user.last_request_at == nil%>

@@ -8,9 +8,15 @@ class HugsController < ApplicationController
   end
 
   def create
-    @hug = Hug.new(hug_params)
+    @hug = Hug.new
+    @sender_id = current_user.id
+    @hug.sender_id = @sender_id
+    user = User.find(params[:user_id])
+    @hug.receiver_id = user.id
+    @hug.progress = 0
     if @hug.save
-      redirect_to @hug
+      HugChannel.broadcast_to(user, "test")
+      redirect_to user_path(user)
     else
       render 'new'
     end

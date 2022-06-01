@@ -18,6 +18,13 @@
   <% end %>
     <%= render 'shared/flashes' %>
 
+    <% if current_user %>
+      <div class="container hug"
+        data-controller="hug-subscription"
+        data-hug-subscription-user-id-value="<%= current_user.id %>">
+      </div>
+    <% end %>
+
     <%= yield %>
 
     <%= render 'shared/navbar' %>
