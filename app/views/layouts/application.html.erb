@@ -10,6 +10,13 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <% if current_user %>
+      <style>
+        :root {
+     --avatar-color: <%= current_user.avatar_color.nil? ? '#3D3D3D' : current_user.avatar_color %>;
+ }
+      </style>
+    <% end %>
   </head>
 
   <body>
