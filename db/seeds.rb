@@ -21,7 +21,7 @@ User.create(nickname: 'Admin',
   bio = Faker::Lorem.sentence(word_count: 10)
   nickname = Faker::Sports::Basketball.player
   email = Faker::Internet.free_email
-  avatar_color = %w[blue green red][rand(0..2)]
+  avatar_color = '#3D3D3D'
   address = ['1 rue Sainte Catherine, Bordeaux',
              '3 cours Alsace-Lorraine, Bordeaux',
              '18 cours de la Marne, Bordeaux',
@@ -32,7 +32,7 @@ User.create(nickname: 'Admin',
               email: email,
               password: 'secret',
               avatar_color: avatar_color,
-              score: 0,
+              score: rand(0..1000).round(-2),
               city: address,
               bio: bio)
 end
