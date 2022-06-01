@@ -13,3 +13,17 @@
 @import "components/index";
 @import "pages/index";
 @import "mapbox-gl/dist/mapbox-gl";
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+}
