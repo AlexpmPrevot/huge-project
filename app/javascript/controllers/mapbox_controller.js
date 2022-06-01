@@ -29,6 +29,10 @@ export default class extends Controller {
       customMarker.style.border = "2px solid #e1e1e1"
       customMarker.style.width = "35px"
       customMarker.style.height = "35px"
+      console.log(marker)
+      if (marker.logged_in === true) {
+        customMarker.style.boxShadow = "0px 0px 10px var(--bs-success)"
+      }
       console.log(customMarker);
 
       new mapboxgl.Marker(customMarker)
