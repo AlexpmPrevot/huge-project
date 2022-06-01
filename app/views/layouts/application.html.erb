@@ -14,7 +14,11 @@
 
   <body>
   <% if current_user %>
-    <div data-controller="geoloc" data-geoloc-userid-value="<% current_user.id %>"></div>
+    <div data-controller="geoloc" data-geoloc-userid-value=""<% current_user.id %>">
+      <div class="d-none">
+        <%= render 'layouts/hidden_form', current_user: current_user %>
+      </div>
+    </div>
   <% end %>
     <%= render 'shared/flashes' %>
 
