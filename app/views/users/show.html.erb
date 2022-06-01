@@ -13,4 +13,12 @@
     <%= link_to "Send a hug request", new_hug_path, class: "btn btn-secondary mt-3" %>
     <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-secondary mt-3" %>
   </div>
+
+  <h1 class="text-center">Reviews</h1>
+  <% if @reviews.empty? %>
+    <p class="text-center">No reviews yet.</p>
+  <% else %>
+    <% @reviews.each do |review| %>
+      <%= render partial: "reviews/review", locals: { review: review } %>
+    <% end %>
 </div>
