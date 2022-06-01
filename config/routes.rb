@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   resources :hugs, :users do
     resources :reviews, only: %i[new create]
   end
-  resources :users, only: %i[show index]
+  resources :users, only: %i[show index] do
+    member do
+      patch 'set_geoloc'
+    end
+  end
 end

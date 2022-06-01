@@ -17,4 +17,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def set_geoloc
+    @user = User.find(params[:id])
+    @user.update(user_params)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:latitude, :longitude)
+  end
 end
