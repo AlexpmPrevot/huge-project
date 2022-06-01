@@ -1,6 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
+
   static targets = ['form', 'latitude', 'longitude']
   static values = {
     userid: String
@@ -31,6 +32,7 @@ export default class extends Controller {
   })
 
   setTimeout(this.getGeoloc.bind(this) , 30000);
+
 
   }
 
