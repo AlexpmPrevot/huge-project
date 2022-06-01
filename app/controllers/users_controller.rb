@@ -8,12 +8,24 @@ class UsersController < ApplicationController
         lat: user.latitude,
         lng: user.longitude,
         image_url: helpers.asset_url("https://picsum.photos/1000/1000"),
-        info_window: render_to_string(partial: "info_window", locals: { user: user })
+        info_window: render_to_string(partial: "info_window", locals: { user: user }),
+        logged_in: user.logged_in
       }
     end
   end
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def set_geoloc
+    @user = User.find(params[:id])
+    @user.update(user_params)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:latitude, :longitude)
   end
 end

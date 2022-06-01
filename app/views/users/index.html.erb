@@ -3,14 +3,14 @@
     <% @users.each do |user| %>
         <div class="col-md-4 mt-3">
         <%= link_to user_path(user), class: "text-dark" do %>
-          <div class="card" style="width: 100%;">
-             <img src="https://picsum.photos/1000/1000" class="card-img-top rounded-circle" alt="hugger profile picture">
+          <div class="card" style="width: 300px; heigth: 600px;">
+
+              <%= image_tag(user.avatar, class: 'card-img-top rounded-circle', style: "background-color: #{user.avatar_color}") %>
               <div class="card-body">
                 <h5 class="card-title"><%= user.nickname %></h5>
                 <div class="d-flex">
                 <h6 class="card-subtitle mb-2 text-muted"><%= user.score %> points</h6>
-                <% if (user.latitude || user.longitude) == nil %>
-                <% else %>
+                <% if current_user && user.latitude && user.longitude %>
                 <h6 class="card-subtitle mb-2 text-muted ms-3">Distance: <%= (current_user.distance_from(user) * 1000).round %> m</h6>
                 <% end %>
                 </div>

@@ -1,11 +1,41 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  // static targets = [ "output" ]
+
+  static targets = ['form', 'latitude', 'longitude']
+  static values = {
+    userid: String
+  }
 
   connect() {
-    // this.outputTarget.textContent = 'Hello, Stimulus!'
+
+
+
+    this.getGeoloc()
+
+
+
+}
+
+  getGeoloc() {
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+      console.log(lat)
+      console.log(long)
+    this.latitudeTarget.value = lat
+    this.longitudeTarget.value = long
+    console.log(this.formTarget);
+    this.formTarget.submit()
+
+  })
+
+  setTimeout(this.getGeoloc.bind(this) , 30000);
+
+
   }
+
 }
 
 
