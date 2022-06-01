@@ -9,8 +9,7 @@
                 <h5 class="card-title"><%= user.nickname %></h5>
                 <div class="d-flex">
                 <h6 class="card-subtitle mb-2 text-muted"><%= user.score %> points</h6>
-                <% if (user.latitude || user.longitude) == nil %>
-                <% else %>
+                <% if current_user && user.latitude && user.longitude %>
                 <h6 class="card-subtitle mb-2 text-muted ms-3">Distance: <%= (current_user.distance_from(user) * 1000).round %> m</h6>
                 <% end %>
                 </div>
