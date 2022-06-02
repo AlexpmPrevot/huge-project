@@ -15,7 +15,7 @@ class HugsController < ApplicationController
     @hug.receiver_id = user.id
     @hug.progress = 0
     if @hug.save
-      HugChannel.broadcast_to(user, "test")
+      HugChannel.broadcast_to(user, "coucou")
       redirect_to user_path(user)
     else
       render 'new'
