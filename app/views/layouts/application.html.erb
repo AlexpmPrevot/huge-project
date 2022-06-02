@@ -35,7 +35,9 @@
         </div>
       </div>
     <% end %>
-    <%= yield %>
+    <div class="flex-grow-1">
+      <%= yield %>
+    </div>
 
     <%= render 'shared/navbar' %>
   </body>
