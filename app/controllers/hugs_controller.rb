@@ -31,7 +31,7 @@ class HugsController < ApplicationController
     @hug.sender_id = @sender_id
     user = User.find(params[:user_id])
     @hug.receiver_id = user.id
-    @hug.progress = 0
+    @hug.progress = :pending
     if @hug.save
       HugChannel.broadcast_to(user, render_to_string(partial: "hug_modal", locals: { hug: @hug }))
       redirect_to user_path(user)
@@ -42,7 +42,8 @@ class HugsController < ApplicationController
 
   def update
     @hug = Hug.find(params[:id])
-    @hug.update(hug_params)
+    @hug.accepted!
+    HugChannel.broadcast_to(@hug.sender, render_to_string(partial:"accept_hug_modal", locals: { hug: @hug }))
     redirect_to @hug
   end
 
