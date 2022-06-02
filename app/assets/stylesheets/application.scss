@@ -15,16 +15,8 @@
 @import "mapbox-gl/dist/mapbox-gl";
 @import "jquery-bar-rating/dist/themes/css-stars";
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.navbar {
-  flex-grow: 1;
-}
 
 a {
   text-decoration: none;
+  color: #3D3D3D;
 }
