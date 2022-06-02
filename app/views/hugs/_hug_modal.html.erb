@@ -3,8 +3,8 @@
 		<div class="message">
       <h1><%=current_user.nickname%></h1>
       <p>Send you a hug request</p>
-      <%= link_to "Accept", hug_path(hug) %>
-      <%= link_to "Refuse", hug_path(hug), method: :delete %>
+      <%= link_to "Accept", hug_path(hug), id: "accept" %>
+      <%= link_to "Refuse", hug_path(hug), method: :delete, id: "refuse" %>
     </div>
 	</div>
 </div>
