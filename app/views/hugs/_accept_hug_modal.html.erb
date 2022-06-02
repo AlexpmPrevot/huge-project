@@ -1,0 +1,9 @@
+<div id="modal">
+	<div class="container-modal">
+		<div class="message">
+      <h1><%=current_user.nickname%></h1>
+      <p>Request accepted</p>
+      <%= link_to "Ok", hug_path(hug), id: "accept" %>
+    </div>
+	</div>
+</div>

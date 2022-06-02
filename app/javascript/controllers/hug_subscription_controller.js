@@ -5,12 +5,9 @@ export default class extends Controller {
   static values = { userId: Number }
   static targets = ["popup"]
 
-  displayPopup(event) {
-    console.log("test popup")
-  }
-
   connect() {
     console.log(`Subscribe to the hug with the id ${this.userIdValue}.`)
+    console.log(consumer)
     this.channel = consumer.subscriptions.create(
       { channel: "HugChannel", id: this.userIdValue },
       { received: (data) => {
