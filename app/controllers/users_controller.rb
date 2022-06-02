@@ -13,7 +13,6 @@ class UsersController < ApplicationController
         logged_in: user.logged_in
       }
     end
-
     respond_to do |format|
       format.html {}
       format.json { render json: @markers.as_json }
