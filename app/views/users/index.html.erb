@@ -17,15 +17,15 @@
               <%= image_tag(user.avatar, class: 'card-img-top rounded-circle', style: "background-color: #{user.avatar_color}") %>
               <% end %>
               <div class="card-body">
-                <h5 class="card-title"><%= user.nickname %></h5>
+                <h5 class="card-title text-light"><strong><%= user.nickname %></strong></h5>
                 <div class="d-flex">
-                <h6 class="card-subtitle mb-2 text-muted"><%= user.score %> points</h6>
+                <h6 class="card-subtitle mb-2 text-custom-yellow"><strong><%= user.score %> points</strong></h6>
                 <% if current_user && user.latitude && user.longitude %>
-                <h6 class="card-subtitle mb-2 text-muted ms-3">Distance: <%= (current_user.distance_from(user) * 1000).round %> m</h6>
+                <h6 class="card-subtitle mb-2 text-light ms-3">Distance: <%= (current_user.distance_from(user) * 1000).round %> m</h6>
                 <% end %>
                 </div>
-                <p class="card-text"><%= user.bio %></p>
-                <%= link_to 'Hug request', hugs_path(user_id: user.id), method: :post, class: 'btn btn-success mb-2' %>
+                <p class="card-text text-light"><%= user.bio %></p>
+                <%= link_to 'Hug request', hugs_path(user_id: user.id), method: :post, class: 'btn btn-color-custom-orange text-light mb-2' %>
                 <% if user.logged_in? %>
                   <p class="card-text">Online</p>
                 <% elsif user.last_request_at == nil%>
