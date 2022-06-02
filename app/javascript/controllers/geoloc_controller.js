@@ -22,8 +22,6 @@ export default class extends Controller {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
-      console.log(lat)
-      console.log(long)
     this.latitudeTarget.value = lat
     this.longitudeTarget.value = long
     console.log(this.formTarget);

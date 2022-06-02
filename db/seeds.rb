@@ -32,7 +32,7 @@ User.create(nickname: 'Admin',
               email: email,
               password: 'secret',
               avatar_color: avatar_color,
-              score: rand(0..1000).round(-2),
+              score: rand(0..1000),
               city: address,
               bio: bio)
 end
