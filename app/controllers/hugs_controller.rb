@@ -5,6 +5,7 @@ class HugsController < ApplicationController
 
   def show
     @hug = Hug.find(params[:id])
+    @review = Review.new
   end
 
   def create

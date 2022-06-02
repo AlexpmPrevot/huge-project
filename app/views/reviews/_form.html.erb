@@ -1,0 +1,9 @@
+<div class="card p-3 m-3 shadow-sm rounded">
+<%= simple_form_for([hug, review ],
+                      data: { insert_in_list_target: "form",
+                              action: "submit->insert-in-list#send" }, html: { class: "review_form" }) do |f| %>
+    <%= f.input :rating, collection: (1..5).to_a, lable:"Rate your experience" %>
+  <% end %>
+</div>
+
+  <%#= render 'reviews/form', hug: @hug, review: @review %>
