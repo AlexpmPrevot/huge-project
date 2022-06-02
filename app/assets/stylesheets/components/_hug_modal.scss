@@ -1,0 +1,19 @@
+#modal {
+  position: absolute;
+  z-index: 1 ;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4)
+}
+
+.container-modal{
+  position: absolute;
+  z-index: 2;
+  height: 300px;
+  width: 300px;
+  background-color: white;
+  margin-left: 10%;
+  margin-top: 50%;
+  border-radius: 10px;
+  text-align: center;
+}

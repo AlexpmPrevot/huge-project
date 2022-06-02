@@ -8,9 +8,14 @@
 @import "user-color";
 @import "cards";
 
+@import "hug_modal";
+
 .card-img-top {
   width: 100%;
   height: 300px;
   object-position: center;
 
 }
+
+@import "progress-bar"
+

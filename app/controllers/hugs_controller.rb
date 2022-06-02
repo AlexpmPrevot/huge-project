@@ -16,7 +16,7 @@ class HugsController < ApplicationController
     @hug.receiver_id = user.id
     @hug.progress = 0
     if @hug.save
-      HugChannel.broadcast_to(user, "test")
+      HugChannel.broadcast_to(user, render_to_string(partial: "hug_modal", locals: { hug: @hug }))
       redirect_to user_path(user)
     else
       render 'new'
@@ -28,6 +28,12 @@ class HugsController < ApplicationController
     @hug.update(hug_params)
     redirect_to @hug
   end
+
+  def destroy
+    @hug = Hug.find(params[:id])
+    redirect_to users_path if @hug.destroy
+  end
+
 
   private
 
