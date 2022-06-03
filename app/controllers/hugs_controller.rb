@@ -34,7 +34,7 @@ class HugsController < ApplicationController
     @hug.progress = :pending
     if @hug.save
       HugChannel.broadcast_to(user, render_to_string(partial: "hug_modal", locals: { hug: @hug }))
-      redirect_to user_path(user)
+      redirect_to user_path(user), notice: "Hug send successfuly"
     else
       render 'new'
     end

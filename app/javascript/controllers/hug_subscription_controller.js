@@ -6,12 +6,10 @@ export default class extends Controller {
   static targets = ["popup"]
 
   connect() {
-    console.log(`Subscribe to the hug with the id ${this.userIdValue}.`)
-    console.log(consumer)
+    // console.log(`Subscribe to the hug with the id ${this.userIdValue}.`)
     this.channel = consumer.subscriptions.create(
       { channel: "HugChannel", id: this.userIdValue },
       { received: (data) => {
-        console.log(this.popupTarget)
         this.popupTarget.insertAdjacentHTML("beforeend", data)
         }
       }
