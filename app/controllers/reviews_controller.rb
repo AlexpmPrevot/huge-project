@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     hug = Hug.find(params[:hug_id])
     @review.target = hug.receiver
-    @review.reviewer = current_user
+    @review.reviewer = hug.sender
     @review.hug = hug
     @review.save
     redirect_to hug
