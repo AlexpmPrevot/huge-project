@@ -2,6 +2,10 @@
   background-color: $custom-green;
 }
 
+.bg-custom-gray {
+  background-color: $custom-gray;
+}
+
 .border-custom-orange {
   border-color: $custom-orange;
 }
@@ -29,4 +33,30 @@
   background-color: $custom-gray;
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.border-custom-gray {
+  border-color: $custom-gray;
+}
+
+.br-theme-css-stars .br-widget a:after {
+  content: "\2605";
+  color: #d2d2d2;
+}
+
+.stars {
+  text-decoration: none;
+  height: 18px;
+  width: 18px;
+  font-size: 23px;
+  margin-right: 5px;
+  > i {
+    height: 28px;
+    white-space: nowrap;
+  }
+
+  > i.active {
+    color: #EDB867
+  }
+
 }

@@ -6,4 +6,19 @@
       data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-  <%= render 'reviews/form', hug: @hug, review: @review %>
+  <% if current_user.reviews.find_by(hug:@hug) %>
+    <div class="bg-custom-gray shadow-lg rounded m-3 p-3">
+      <div class="stars d-flex">
+        <% 5.times do |i| %>
+          <% if current_user.reviews.find_by(hug:@hug).rating > i %>
+            <i class="fa-solid fa-star active"></i>
+          <% else %>
+            <i class="fa-solid fa-star"></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  <% else %>
+    <%= render 'reviews/form', hug: @hug, review: @review %>
+  <% end %>
