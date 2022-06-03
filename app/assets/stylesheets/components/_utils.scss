@@ -22,4 +22,11 @@
 .btn-custom-green {
   background-color: $custom-green;
   border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.btn-custom-gray {
+  background-color: $custom-gray;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
