@@ -36,3 +36,17 @@ User.create(nickname: 'Admin',
               city: address,
               bio: bio)
 end
+
+User.create(nickname: 'Desty',
+            email: 'desty@huge.com',
+            password: 'secret',
+            avatar_color: 'green',
+            score: 1400,
+            city: '132 cours Balguerie Stuttenberg 33000 Bordeaux',
+            bio: Faker::Lorem.sentence(word_count: 10))
+
+Hug.create(
+  sender_id: 1,
+  receiver_id: 8,
+  progress: 0
+)
