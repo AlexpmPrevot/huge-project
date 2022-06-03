@@ -43,7 +43,7 @@ class HugsController < ApplicationController
   def update
     @hug = Hug.find(params[:id])
     @hug.accepted!
-    HugChannel.broadcast_to(@hug.sender, render_to_string(partial:"accept_hug_modal", locals: { hug: @hug }))
+    HugChannel.broadcast_to(@hug.sender, render_to_string(partial: "accept_hug_modal", locals: { hug: @hug }))
     redirect_to @hug
   end
 
