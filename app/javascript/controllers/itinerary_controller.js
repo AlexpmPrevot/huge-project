@@ -10,13 +10,15 @@ export default class extends Controller {
 
 
   connect() {
-    console.log(markersValue);
     mapboxgl.accessToken = this.apiKeyValue
     var map
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+
+    this.getItinerary()
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
@@ -35,7 +37,19 @@ export default class extends Controller {
 
   }
 
+  getItinerary() {
 
+    const url = `https://api.mapbox.com/directions/v5/mapbox/walking/-0.5658%2C44.85%3B-0.5678%2C44.838?alternatives=true&continue_straight=true&geometries=geojson&language=en&overview=simplified&steps=true&access_token=${this.apiKeyValue}`
+    fetch(url).then((response) => {
+      response.json()
+    })        .then((data) => {
+      console.log(data)
+    })
+
+
+
+
+  }
 
 
   #addMarkersToMap = () => {
