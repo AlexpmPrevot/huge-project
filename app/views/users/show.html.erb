@@ -4,20 +4,9 @@
     <h2 class="text-center fs-1 text mt-3"><%= @user.nickname %></h2>
     <div class="justify-content-center p-3 w100">
       <div class="d-flex justify-content-center">
-        <div class="progress blue fill10">
-          <span class="progress-left">
-            <span class="progress-bar"></span>
-          </span>
-
-            <span class="progress-right">
-
-            <span class="progress-bar"></span>
-          </span>
-          <div class="progress-value">
-            <div>
-              <%= image_tag("https://img2.freepng.fr/20200902/rtc/transparent-draw-so-cute-5f504e2fb3b298.868674291599098415736.jpg", size: "150x120", class: "rounded-circle mx-auto d-block")%>
-            </div>
-          </div>
+        <div class="avatar-gauge">
+              <div class="gauge" data-controller="gauge" data-gauge-color-value="<%= @user.avatar_color %>"></div>
+              <%= image_tag("https://img2.freepng.fr/20200902/rtc/transparent-draw-so-cute-5f504e2fb3b298.868674291599098415736.jpg", size: "150x120", class: "")%>
         </div>
       </div>
     </div>
