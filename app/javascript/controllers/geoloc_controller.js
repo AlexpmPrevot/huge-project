@@ -17,7 +17,6 @@ export default class extends Controller {
         duration = 30000
       }
       setInterval(this.getGeoloc.bind(this) , duration);
-
   }
 
   getGeoloc() {
