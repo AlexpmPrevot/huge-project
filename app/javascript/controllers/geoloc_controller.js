@@ -16,7 +16,6 @@ export default class extends Controller {
         duration = 30000
       }
     setInterval(this.getGeoloc.bind(this) , duration);
-
   }
 
   getGeoloc() {
@@ -27,8 +26,6 @@ export default class extends Controller {
     this.latitudeTarget.value = lat
     this.longitudeTarget.value = long
     this.formTarget.submit()
-    console.log('send coords');
-
     })
   }
 }
