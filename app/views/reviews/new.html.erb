@@ -1,2 +1,26 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="container d-flex flex-column mb-3 justify-content-center mt-3">
+
+  <div class="container justify-content-center">
+    <h1>Comment était ce <strong>HUG(E)</strong>?</h1>
+    <p>Récompense ton HUGGER en lui donnant 5 étoiles!</p>
+  </div>
+
+  <img class="border rounded-circle" src="https://us.123rf.com/450wm/sudowoodo/sudowoodo1611/sudowoodo161100017/67676118-hug-cactus-de-dessin-vectoriel-couple-cactus-mignon-de-bande-dessin%C3%A9e-dans-l-amour-illustration-dr%C3%B4l.jpg" alt="">
+
+    <% if current_user.reviews.find_by(hug:@hug) %>
+      <div class="bg-custom-gray shadow-lg rounded m-3 p-3">
+        <div class="stars d-flex">
+          <% 5.times do |i| %>
+            <% if current_user.reviews.find_by(hug:@hug).rating > i %>
+              <i class="fa-solid fa-star active"></i>
+            <% else %>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+    <% else %>
+      <%= render 'reviews/form', hug: @hug, review: @review %>
+    <% end %>
+</div>

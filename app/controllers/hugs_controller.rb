@@ -22,6 +22,9 @@ class HugsController < ApplicationController
       format.html {}
       format.json { render json: @markers.as_json }
     end
+
+
+
   end
 
   def create

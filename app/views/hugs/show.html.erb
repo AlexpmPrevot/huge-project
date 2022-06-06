@@ -18,19 +18,7 @@
     </div>
     <div id="instructions"></div>
   </div>
-  <% if current_user.reviews.find_by(hug:@hug) %>
-    <div class="bg-custom-gray shadow-lg rounded m-3 p-3">
-      <div class="stars d-flex">
-        <% 5.times do |i| %>
-          <% if current_user.reviews.find_by(hug:@hug).rating > i %>
-            <i class="fa-solid fa-star active"></i>
-          <% else %>
-            <i class="fa-solid fa-star"></i>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
 
-  <% else %>
-    <%= render 'reviews/form', hug: @hug, review: @review %>
-  <% end %>
+<div class="container d-flex justify-content-center">
+  <%= link_to 'Hug terminé!', new_hug_review_path(@hug), class: 'btn btn-color-custom-orange text-light mb-2' %>
+</div>

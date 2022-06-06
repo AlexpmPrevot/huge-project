@@ -1,6 +1,13 @@
-<div class="mapboxgl-popup">
+<div class="mapboxgl-popup text-light">
   <div class="mapboxgl-popup-content">
-    <h2><%= user.nickname %></h2>
-    <p><%= user.city %></p>
+    <%=link_to user.nickname, user_path(user), class:'fs-5 fw-bold' %>
+    <%=link_to 'Hug request', hugs_path(user_id: user), method: :post, class: 'btn btn-custom-orange small text-light mb-2', id: 'request' %>
+    <% if user.logged_in? %>
+      <p class="card-text">Online</p>
+    <% elsif user.last_request_at == nil%>
+      <p class="card-text">Waiting for 1st connexion</p>
+    <% else %>
+      <p class="card-text">Last seen <%= humanized_duration(Time.now - user.last_request_at) %></p>
+    <% end %>
   </div>
 </div>

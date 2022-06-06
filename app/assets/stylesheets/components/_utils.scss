@@ -42,6 +42,7 @@
 .br-theme-css-stars .br-widget a:after {
   content: "\2605";
   color: #d2d2d2;
+  padding-left: 85px;
 }
 
 .stars {
@@ -59,4 +60,11 @@
     color: #EDB867
   }
 
+}
+
+.btn-custom-orange {
+  background-color: $custom-orange;
+  border-radius: 50%px;
+  padding: 1px 1px 1px 1px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
