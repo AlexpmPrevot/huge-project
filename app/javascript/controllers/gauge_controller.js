@@ -3,14 +3,14 @@ import { cubicBezier, Gauge } from 'gauge-chart-js';
 import gradstop from 'gradstop';
 export default class extends Controller {
   static values = {
-    color: String
+    color: String,
+    score: Number,
   }
   connect() {
     const step = 70;
     const fromAngle = 0;
     const toAngle = 360;
     const maxValue = toAngle - fromAngle;
-    let value = maxValue * 0.2;
     const container = this.element
     const sharedConfig = {
       lineWidth: 3,
@@ -31,6 +31,9 @@ export default class extends Controller {
         colorArray: [this.colorValue, '#86A8E7', '#5FFBF1']
       })
     });
+    let score = String(this.scoreValue).slice(-2)
+    let numScore = Number(score)
+    let value = numScore * 3.6;
     gaugeMain.setValue(value);
   }
 }
