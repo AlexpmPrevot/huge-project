@@ -17,6 +17,9 @@ class UsersController < ApplicationController
         logged_in: user.logged_in
       }
     end
+
+    # @users.to_a
+    # @users.ljk
     respond_to do |format|
       format.html {}
       format.json { render json: @markers.as_json }
