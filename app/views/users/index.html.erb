@@ -23,7 +23,7 @@
                 <div class="d-flex justify-content-between">
                   <h6 class="card-subtitle mb-2 text-custom-yellow"><strong><%= user.score %> points</strong></h6>
                   <% if current_user && user.latitude && user.longitude %>
-                  <h6 class="card-subtitle mb-2 text-light ms-3">Distance: <%= (current_user.distance_from(user) * 1000).round %> m</h6>
+                  <h6 class="card-subtitle mb-2 text-light ms-3">Distance: <%= (current_user.distance_to(user) * 1000).round %> m</h6>
                   <% end %>
                 </div>
                 <p class="card-text text-light"><%= user.bio %></p>
