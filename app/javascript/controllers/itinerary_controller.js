@@ -17,9 +17,9 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+    this.map.on('load', this.getRoute.bind(this))
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.map.on('load', this.getRoute.bind(this))
     this.getMarkersdata()
   }
 
