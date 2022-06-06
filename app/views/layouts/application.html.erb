@@ -8,13 +8,12 @@
     <script src="https://kit.fontawesome.com/2c3cafcce6.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <% if current_user %>
       <style>
         :root {
      --avatar-color: <%= current_user.avatar_color.nil? ? '#3D3D3D' : current_user.avatar_color %>;
- }
+  }
       </style>
     <% end %>
   </head>
