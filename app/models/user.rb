@@ -7,6 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # scope :with_distance_to, ->(point) { select("#{users}.*").select("(#{distance_from_sql(point)}) as distance") }
+
   def currently_logged_in(logged_in = true)
     where(logged_in: logged_in).where("last_request_at > ?", Time.zone.now - timeout_in.seconds)
   end
