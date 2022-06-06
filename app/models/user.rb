@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
-  before_create :set_avatar
   has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
 
   devise :database_authenticatable, :registerable,
@@ -18,7 +17,8 @@ class User < ApplicationRecord
   end
 
   def set_avatar
-    self.avatar = 'avatars/Cactus1.png'
+    self.avatar = "avatars/Cactus#{(score/100).floor}.png" unless score > 100 || score < 900
+
   end
 
   def upgrade_avatar

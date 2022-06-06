@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+
   def index
     @users = User.all
+    @users.each do |user|
+      user.upgrade_avatar
+    end
+
     @markers = @users.geocoded.map do |user|
       {
         id: user.id,
         lat: user.latitude,
         lng: user.longitude,
-        image_url: helpers.asset_url("https://picsum.photos/1000/1000"),
+        image_url: helpers.asset_url("https://us.123rf.com/450wm/sudowoodo/sudowoodo1611/sudowoodo161100017/67676118-hug-cactus-de-dessin-vectoriel-couple-cactus-mignon-de-bande-dessin%C3%A9e-dans-l-amour-illustration-dr%C3%B4l.jpg"),
         info_window: render_to_string(partial: "users/info_window", locals: { user: user }, formats: [:html]),
         logged_in: user.logged_in
       }
@@ -20,6 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user.upgrade_avatar
     @review = Review.new
   end
 

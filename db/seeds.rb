@@ -9,19 +9,23 @@ require 'faker'
 
 User.destroy_all
 
+
+
 User.create(nickname: 'Admin',
   email: 'admin@huge.com',
   password: 'secret',
   avatar_color: 'green',
-  score: 1000,
+  score: 900,
   city: '176 cours Balguerie Stuttenberg 33000 Bordeaux',
-  bio: Faker::Lorem.sentence(word_count: 10))
+  bio: Faker::Lorem.sentence(word_count: 10),
+  logged_in: [true, false].sample)
+
 
 6.times do
-  bio = Faker::Lorem.sentence(word_count: 10)
-  nickname = Faker::Sports::Basketball.player
-  email = Faker::Internet.free_email
-  avatar_color = '#3D3D3D'
+  bio = Faker::Lorem.sentence(word_count: 10),
+  nickname = Faker::Sports::Basketball.player,
+  email = Faker::Internet.free_email,
+  avatar_color = '#3D3D3D',
   address = ['1 rue Sainte Catherine, Bordeaux',
              '3 cours Alsace-Lorraine, Bordeaux',
              '18 cours de la Marne, Bordeaux',
@@ -34,14 +38,15 @@ User.create(nickname: 'Admin',
               avatar_color: avatar_color,
               score: rand(0..1000),
               city: address,
-              bio: bio)
+              bio: bio,
+              logged_in: [true, false].sample)
 end
 
 User.create(nickname: 'Desty',
             email: 'desty@huge.com',
             password: 'secret',
             avatar_color: 'green',
-            score: 1400,
+            score: 750,
             city: '132 cours Balguerie Stuttenberg 33000 Bordeaux',
             bio: Faker::Lorem.sentence(word_count: 10))
 
@@ -50,3 +55,14 @@ Hug.create(
   receiver_id: 8,
   progress: 0
 )
+
+users = User.all
+users.each do |user|
+  if user.score < 100
+    user.avatar = "avatars/Cactus1.png"
+  else
+    level = (user.score.round(-2) / 100)
+    user.avatar = "avatars/Cactus#{level}.png"
+    user.save
+  end
+end
