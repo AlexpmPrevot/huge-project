@@ -10,11 +10,13 @@
     <div style="width: 100%; height: 600px;"
       data-controller="itinerary"
       data-itinerary-markers-value="<%= @markers.to_json %>"
+      data-itinerary-hug-id-value="<%= @hug.id %>"
       data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       data-itinerary-start-point-value="<%=current_user.longitude%>,<%=current_user.latitude%>"
       data-itinerary-end-point-value="<%= user_2 %>"
       >
     </div>
+    <div id="instructions"></div>
   </div>
   <% if current_user.reviews.find_by(hug:@hug) %>
     <div class="bg-custom-gray shadow-lg rounded m-3 p-3">

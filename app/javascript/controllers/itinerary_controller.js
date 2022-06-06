@@ -8,9 +8,8 @@ export default class extends Controller {
     coordinates: Array,
     startPoint: String,
     endPoint: String,
+    hugId: Number,
   }
-
-
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
@@ -18,31 +17,25 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
-
-
-
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    if (this.map.loaded()) {
-      this.getRoute()
-    }
-
+    this.map.on('load', this.getRoute.bind(this))
+    this.getMarkersdata()
   }
 
-
   getRoute() {
-    // make a directions request using cycling profile
-    // an arbitrary start will always be the same
-    // only the end or destination will change
     fetch(
       `https://api.mapbox.com/directions/v5/mapbox/walking/${this.startPointValue};${this.endPointValue}?radiuses=unlimited;unlimited&geometries=geojson&access_token=${this.apiKeyValue}`,
       { method: 'GET' }
     ).then((response) => {
       return response.json()
     }).then((data) => {
+      console.log(data)
+     return data.routes[0]
 
-     return data.routes[0].geometry.coordinates
-    }).then((coordinates) => {
+    }).then((route) => {
+      this.displayInstructions(route)
+      const coordinates = route.geometry.coordinates
       this.displayItinerary(coordinates)
     })
 
@@ -58,7 +51,7 @@ export default class extends Controller {
         coordinates: coordinates
       }
     };
-    // if the route already exists on the map, we'll reset it using setData
+
     if (this.map.getSource(geojson)) {
       this.map.getSource(geojson).setData(json);
     }
@@ -85,18 +78,33 @@ export default class extends Controller {
     }
     }
 
+    displayInstructions(route) {
+      const instructions = document.getElementById('instructions');
+      const steps = route.legs[0].steps;
+
+      let tripInstructions = '';
+      for (const step of steps) {
+        tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+      }
+      instructions.innerHTML = `<p style="color: black;"><strong>Trip duration: ${Math.floor(
+        route.duration / 60
+      )} min 🚶🏻</strong></p>`;
+    }
 
 
 
 
     #addMarkersToMap = () => {
 
-
-
     this.markersValue.forEach((marker) => {
+      const existingMarker = this.map._markers.find(m => m._element.id === `${marker.user_id}`  )
+      if (existingMarker) {
+        existingMarker.remove()
+      }
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customMarker = document.createElement("div")
       customMarker.className = "marker"
+      customMarker.id = `${marker.user_id}`
       customMarker.style.backgroundImage = `url('${marker.image_url}')`
       customMarker.style.backgroundSize = "cover"
       customMarker.style.borderRadius = "50%"
@@ -116,8 +124,6 @@ export default class extends Controller {
     });
   }
 
-
-
     #fitMapToMarkers() {
       const bounds = new mapboxgl.LngLatBounds()
       this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -125,5 +131,19 @@ export default class extends Controller {
     }
 
 
+    getMarkersdata() {
+      fetch(`/hugs/${this.hugIdValue}`,
+                    {headers: { "contentType": 'application/json',
+                    "accept": 'application/json'}})
+                    .then((response) => response.json())
+                    .then((data) => {
+                      this.markersValue = data
+                      this.#addMarkersToMap()
+                      setTimeout( this.getMarkersdata.bind(this)
+                      , 2000);
+                    })
 
+
+
+    }
   }
