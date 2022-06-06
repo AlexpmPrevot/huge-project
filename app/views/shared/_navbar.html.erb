@@ -5,11 +5,19 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <%= link_to "Huggers", users_path %>
-      <%= link_to "My profile", user_path(current_user)%>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <%= link_to users_path do %>
+        <i class="fa-solid fa-users"></i>
+      <% end %>
+      <%= link_to user_path(current_user) do %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fa-solid fa-door-open"></i>
+      <% end %>
     <% else %>
-      <%= link_to "Sign in", new_user_session_path, class: "nav-link text-white" %>
+      <%= link_to new_user_session_path do %>
+        <i class="fa-solid fa-dungeon"></i>
+      <% end %>
     <% end %>
     </div>
   </div>
