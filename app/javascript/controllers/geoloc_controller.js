@@ -8,14 +8,14 @@ export default class extends Controller {
   }
 
   connect() {
-    this.getGeoloc()
+    // this.getGeoloc()
+    let duration
     if (window.location.pathname.toString().includes("/hugs/")) {
-        const duration = 3000
-        return setTimeout(this.getGeoloc.bind(this) , duration);
+        duration = 3000
       } else {
-        const duration = 30000
+        duration = 30000
       }
-      setTimeout(this.getGeoloc.bind(this) , duration);
+    setInterval(this.getGeoloc.bind(this) , duration);
 
   }
 
