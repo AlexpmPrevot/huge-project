@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+  def new
+    @review = Review.new
+    @hug = Hug.find(params[:hug_id])
+  end
+
   def create
     @review = Review.new(review_params)
     hug = Hug.find(params[:hug_id])
@@ -10,7 +15,7 @@ class ReviewsController < ApplicationController
       @review.target = hug.sender
     end
     @review.save
-    redirect_to hug
+    redirect_to users_path
   end
 
   private
