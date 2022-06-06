@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    #distance_between(lat1, lon1, lat2, lon2, options = {}) ⇒ Object
+    # @users = User.near(params[:longitude, :latitude], 10, order: distance_from([current_user.longitude, current_user.latitude]))
     @users = User.all
     @users.each do |user|
       user.upgrade_avatar
@@ -17,9 +19,9 @@ class UsersController < ApplicationController
         logged_in: user.logged_in
       }
     end
-
-    # @users.to_a
-    # @users.ljk
+    @users = @users.sort_by do |user|
+      current_user.distance_to([user.longitude, user.latitude])
+    end.reverse
     respond_to do |format|
       format.html {}
       format.json { render json: @markers.as_json }
