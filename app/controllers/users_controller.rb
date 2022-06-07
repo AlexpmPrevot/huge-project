@@ -19,8 +19,8 @@ class UsersController < ApplicationController
       }
     end
 
-    if current_user
-      @users = @users.sort_by do |user|
+    if current_user && current_user.latitude && current_user.longitude
+      @users = @users.geocoded.sort_by do |user|
         current_user.distance_to([user.longitude, user.latitude])
       end.reverse
     end
