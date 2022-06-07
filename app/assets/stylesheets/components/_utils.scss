@@ -71,5 +71,22 @@
   color: #fff;
   font-size: 14px;
   font-weight: bold;
-  text-decoration: $custom-orange;
+}
+.user-link:hover {
+  color:$custom-orange;
+}
+
+.map-box {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 15px 15px 15px 15px rgba(0,0,0,0.75);
+  padding: 20px;
+}
+
+#pop-up {
+  height: 100px !important;
+  width: 200px !important;
+  border-radius: 5px;
+  box-shadow: 15px 15px 15px 15px rgba(0,0,0,0.20);
+  padding: 20px;
 }

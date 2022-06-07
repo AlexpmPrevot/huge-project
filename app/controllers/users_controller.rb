@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @review = Review.new
+    @reviews = Review.all.where(id: [@receiver_id, @sender_id])
   end
 
   def set_geoloc
