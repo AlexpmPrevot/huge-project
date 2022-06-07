@@ -1,4 +1,4 @@
-<div class="container d-flex flex-column mb-3 justify-content-center mt-3">
+<div class="container d-flex flex-column mb-5 justify-content-center mt-3">
 
   <div class="container justify-content-center">
     <h1>Comment était ce <strong>HUG(E)</strong>?</h1>
@@ -6,9 +6,10 @@
   </div>
 
   <img class="border rounded-circle shadow-lg" src="https://us.123rf.com/450wm/sudowoodo/sudowoodo1611/sudowoodo161100017/67676118-hug-cactus-de-dessin-vectoriel-couple-cactus-mignon-de-bande-dessin%C3%A9e-dans-l-amour-illustration-dr%C3%B4l.jpg" alt="">
+</div>
 
     <% if current_user.reviews.find_by(hug:@hug) %>
-      <div class="bg-custom-gray shadow-lg rounded m-3 p-3">
+      <div class="bg-custom-gray shadow-lg rounded mt-5 p-3">
         <div class="stars d-flex">
           <% 5.times do |i| %>
             <% if current_user.reviews.find_by(hug:@hug).rating > i %>
@@ -23,4 +24,3 @@
     <% else %>
       <%= render 'reviews/form', hug: @hug, review: @review %>
     <% end %>
-</div>
