@@ -20,7 +20,7 @@
   <div class="d-flex justify-content-center text-center mt-3 mb-5">
     <div data-controller="confirmed-popup" >
       <% if @user != current_user %>
-        <%= link_to 'Hug request', hugs_path(user_id: @user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2 shadow-lg btn-lg', id: 'request'%>
+        <%= link_to 'Hug request', hugs_path(user_id: @user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2 btn-lg', id: 'request'%>
       <% end %>
     </div>
     <% if @user == current_user %>
