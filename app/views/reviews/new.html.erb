@@ -7,10 +7,10 @@
 
   <img class="border rounded-circle shadow-lg" src="https://us.123rf.com/450wm/sudowoodo/sudowoodo1611/sudowoodo161100017/67676118-hug-cactus-de-dessin-vectoriel-couple-cactus-mignon-de-bande-dessin%C3%A9e-dans-l-amour-illustration-dr%C3%B4l.jpg" alt="">
 </div>
-
+  <div>
     <% if current_user.reviews.find_by(hug:@hug) %>
       <div class="bg-custom-gray shadow-lg rounded mt-5 p-3">
-        <div class="stars d-flex">
+        <div class="stars d-flex w100">
           <% 5.times do |i| %>
             <% if current_user.reviews.find_by(hug:@hug).rating > i %>
               <i class="fa-solid fa-star active"></i>
@@ -24,3 +24,4 @@
     <% else %>
       <%= render 'reviews/form', hug: @hug, review: @review %>
     <% end %>
+  </div>
