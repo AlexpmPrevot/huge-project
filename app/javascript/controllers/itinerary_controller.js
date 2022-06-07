@@ -139,7 +139,7 @@ export default class extends Controller {
                     .then((data) => {
                       this.markersValue = data
                       this.#addMarkersToMap()
-                      setTimeout( this.getMarkersdata.bind(this)
+                      Interval( this.getMarkersdata.bind(this)
                       , 2000);
                     })
 
