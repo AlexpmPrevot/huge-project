@@ -17,13 +17,24 @@ class User < ApplicationRecord
   end
 
   def set_avatar
-    self.avatar = "avatars/Cactus#{(score/100).floor}.png" unless score > 100 || score < 900
-
+    if score < 100
+      self.avatar = "avatars/Cactus1.png"
+    elsif score >= 900
+      self.avatar = "avatars/Cactus10.png"
+    else
+      self.avatar = "avatars/Cactus#{(score / 100).floor + 1}.png" unless score > 100 || score < 900
+    end
   end
 
   def upgrade_avatar
-    level = (self.score.round(-2) / 100)
+    if score < 100
+      self.avatar = "avatars/Cactus1.png"
+    elsif score >= 900
+      self.avatar = "avatars/Cactus10.png"
+    else
+    level = (score.round(-2) / 100)
     self.avatar = "avatars/Cactus#{level}.png"
-    self.save
+    save
+    end
   end
 end

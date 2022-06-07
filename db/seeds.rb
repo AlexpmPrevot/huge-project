@@ -12,13 +12,13 @@ User.destroy_all
 
 
 User.create(nickname: 'Admin',
-  email: 'admin@huge.com',
-  password: 'secret',
-  avatar_color: 'green',
-  score: 900,
-  city: '176 cours Balguerie Stuttenberg 33000 Bordeaux',
-  bio: Faker::Lorem.sentence(word_count: 10),
-  logged_in: [true, false].sample)
+            email: 'admin@huge.com',
+            password: 'secret',
+            avatar_color: 'green',
+            score: 900,
+            city: '176 cours Balguerie Stuttenberg 33000 Bordeaux',
+            bio: Faker::Lorem.sentence(word_count: 10),
+            logged_in: [true, false].sample)
 
 
 6.times do
@@ -47,8 +47,9 @@ User.create(nickname: 'Desty',
             password: 'secret',
             avatar_color: 'green',
             score: 750,
-            city: '132 cours Balguerie Stuttenberg 33000 Bordeaux',
-            bio: Faker::Lorem.sentence(word_count: 10))
+            city: '152 cours Balguerie Stuttenberg 33000 Bordeaux',
+            bio: Faker::Lorem.sentence(word_count: 10),
+            logged_in: true)
 
 Hug.create(
   sender_id: 1,

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def index
     #distance_between(lat1, lon1, lat2, lon2, options = {}) ⇒ Object
     # @users = User.near(params[:longitude, :latitude], 10, order: distance_from([current_user.longitude, current_user.latitude]))
+    current_user.set_avatar
     @users = User.all
     @users.each do |user|
       user.upgrade_avatar
