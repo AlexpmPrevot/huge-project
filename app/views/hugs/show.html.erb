@@ -1,4 +1,6 @@
-
+  <div class="mt-2 text-center fs-1 text">
+    <h1><strong>Hug Time!</strong></h1>
+  </div>
   <% if @hug.sender == current_user %>
     <% user_2 = "#{@hug.receiver.longitude},#{@hug.receiver.latitude}" %>
   <% else %>
@@ -16,7 +18,7 @@
       data-itinerary-end-point-value="<%= user_2 %>"
       >
     </div>
-    <div id="instructions"></div>
+    <div class="text-center mt-2"id="instructions"></div>
   </div>
 
 <div class="container d-flex justify-content-center">

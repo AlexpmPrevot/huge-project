@@ -1,4 +1,4 @@
-<div class="container col-12 col-6">
+<div class="container col-12 col-6 pt-3">
   <h1 class="text-center mb-3 fs-1 text">Profile</h1>
   <div class="border border-dark shadow lg p-3 mb-5 rounded-3 bg-custom-green">
     <h2 class="text-center fs-1 text mt-3"><strong><%= @user.nickname %></strong></h2>
@@ -17,14 +17,14 @@
     </div>
 
   </div>
-  <div class="d-flex justify-content-between text-center mt-3 mb-5">
+  <div class="d-flex justify-content-center text-center mt-3 mb-5">
     <div data-controller="confirmed-popup" >
       <% if @user != current_user %>
-        <%= link_to 'Hug request', hugs_path(user_id: @user), method: :post, class: 'btn btn-custom-green text-white mb-2', id: 'request'%>
+        <%= link_to 'Hug request', hugs_path(user_id: @user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2 shadow-lg btn-lg', id: 'request'%>
       <% end %>
     </div>
     <% if @user == current_user %>
-      <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-custom-gray text-white mb-2" %>
+      <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-custom-gray btn-lg text-white mb-2 mt-5" %>
     <% end %>
   </div>
 </div>
