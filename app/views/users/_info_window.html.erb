@@ -1,6 +1,6 @@
 <div class="mapboxgl-popup text-light">
-  <div class="mapboxgl-popup-content">
-    <%=link_to user.nickname, user_path(user), class:'fs-5 fw-bold' %>
+  <div class="mapboxgl-popup-content" id="pop-up">
+    <%=link_to user.nickname, user_path(user), class:'user-link min-xl' %>
     <%=link_to 'Hug request', hugs_path(user_id: user), method: :post, class: 'btn btn-custom-orange small text-light mb-2', id: 'request' %>
     <% if user.logged_in? %>
       <p class="card-text">Online</p>

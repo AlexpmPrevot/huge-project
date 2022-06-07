@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.upgrade_avatar
     @review = Review.new
+    @reviews = Review.all.where(id: [@receiver_id, @sender_id])
   end
 
   def set_geoloc
