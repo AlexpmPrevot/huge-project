@@ -51,6 +51,8 @@ class HugsController < ApplicationController
 
   def destroy
     @hug = Hug.find(params[:id])
+    @hug.denied!
+    HugChannel.broadcast_to(@hug.sender, render_to_string(partial: "denied_hug_modal", locals: { hug: @hug }))
     redirect_to users_path if @hug.destroy
   end
 
