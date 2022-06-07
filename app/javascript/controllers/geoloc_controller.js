@@ -8,14 +8,16 @@ export default class extends Controller {
   }
 
   connect() {
-
-
-
     this.getGeoloc()
-
-
-
-}
+    let duration
+    if (window.location.pathname.toString().includes("/hugs/")) {
+        duration = 3000
+        return setTimeout(this.getGeoloc.bind(this) , duration);
+      } else {
+        duration = 30000
+      }
+      setInterval(this.getGeoloc.bind(this) , duration);
+  }
 
   getGeoloc() {
 
@@ -24,24 +26,7 @@ export default class extends Controller {
       const long = position.coords.longitude;
     this.latitudeTarget.value = lat
     this.longitudeTarget.value = long
-    console.log(this.formTarget);
     this.formTarget.submit()
-
-  })
-
-  setTimeout(this.getGeoloc.bind(this) , 30000);
-
-
+    })
   }
-
 }
-
-
-
-
-
-// controller stimulus
-// connect avec une fontion qui appel
-// getCurrentPosition()
-// fetch les coordonnées en db POST
-// inserer toutes les 10 sec (timeout)

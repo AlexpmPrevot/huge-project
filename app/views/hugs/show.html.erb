@@ -1,4 +1,6 @@
-
+  <div class="mt-2 text-center fs-1 text">
+    <h1><strong>Hug Time!</strong></h1>
+  </div>
   <% if @hug.sender == current_user %>
     <% user_2 = "#{@hug.receiver.longitude},#{@hug.receiver.latitude}" %>
   <% else %>
@@ -10,11 +12,13 @@
     <div style="width: 100%; height: 600px;"
       data-controller="itinerary"
       data-itinerary-markers-value="<%= @markers.to_json %>"
+      data-itinerary-hug-id-value="<%= @hug.id %>"
       data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       data-itinerary-start-point-value="<%=current_user.longitude%>,<%=current_user.latitude%>"
       data-itinerary-end-point-value="<%= user_2 %>"
       >
     </div>
+    <div class="text-center mt-2"id="instructions"></div>
   </div>
 
 <div class="container d-flex justify-content-center">

@@ -3,7 +3,7 @@
 }
 
 .bg-custom-gray {
-  background-color: $custom-gray;
+  background-color: #FF6333;
 }
 
 .border-custom-orange {
@@ -38,20 +38,25 @@
 .border-custom-gray {
   border-color: $custom-gray;
 }
+.br-widget {
+  display: flex;
+  justify-content: center;
+}
 
 .br-theme-css-stars .br-widget a:after {
   content: "\2605";
   color: #d2d2d2;
+
 }
 
 .stars {
   text-decoration: none;
-  height: 18px;
-  width: 18px;
-  font-size: 23px;
-  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  font-size: 30px;
+  margin-right: 15px;
   > i {
-    height: 28px;
+    height: 30px;
     white-space: nowrap;
   }
 

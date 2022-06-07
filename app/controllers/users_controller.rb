@@ -1,18 +1,28 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  def index
-    @users = User.all
 
+  def index
+    #distance_between(lat1, lon1, lat2, lon2, options = {}) ⇒ Object
+    # @users = User.near(params[:longitude, :latitude], 10, order: distance_from([current_user.longitude, current_user.latitude]))
+    current_user.set_avatar
+    @users = User.all
+    @users.each do |user|
+      user.upgrade_avatar
+    end
 
     @markers = @users.geocoded.map do |user|
       {
+        id: user.id,
         lat: user.latitude,
         lng: user.longitude,
-        image_url: helpers.asset_url("https://picsum.photos/1000/1000"),
+        image_url: helpers.asset_url("https://us.123rf.com/450wm/sudowoodo/sudowoodo1611/sudowoodo161100017/67676118-hug-cactus-de-dessin-vectoriel-couple-cactus-mignon-de-bande-dessin%C3%A9e-dans-l-amour-illustration-dr%C3%B4l.jpg"),
         info_window: render_to_string(partial: "users/info_window", locals: { user: user }, formats: [:html]),
         logged_in: user.logged_in
       }
     end
+    @users = @users.sort_by do |user|
+      current_user.distance_to([user.longitude, user.latitude])
+    end.reverse
     respond_to do |format|
       format.html {}
       format.json { render json: @markers.as_json }
@@ -21,6 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user.upgrade_avatar
     @review = Review.new
     @reviews = Review.all.where(id: [@receiver_id, @sender_id])
   end
