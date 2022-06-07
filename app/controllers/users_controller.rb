@@ -40,7 +40,15 @@ class UsersController < ApplicationController
 
   def set_geoloc
     @user = User.find(params[:id])
-    @user.update(user_params)
+    puts @user.latitude
+    puts @user.longitude
+    if @user.update(user_params)
+      puts "$$$$$$$$$$$$$$$$$$$$$$$OK$$$$$$$$$$$$$$$$$$$$$"
+      puts @user.latitude
+      puts @user.longitude
+    else
+      raise
+    end
   end
 
   private

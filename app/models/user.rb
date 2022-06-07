@@ -1,9 +1,8 @@
 class User < ApplicationRecord
   geocoded_by :city
-  after_validation :geocode
-  has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
   after_create :geocode
   # after_create :set_latlong
+  has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

@@ -20,7 +20,7 @@ export default class extends Controller {
     this.map.on('load', this.getRoute.bind(this))
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.getMarkersdata()
+    setInterval(this.getMarkersdata.bind(this), 2000);
   }
 
   getRoute() {
@@ -115,6 +115,10 @@ export default class extends Controller {
       if (marker.logged_in === true) {
         customMarker.style.boxShadow = "0px 0px 10px var(--bs-success)"
       }
+      // console.log("$$$$$$$$$$$$$$$$$$$");
+      // console.log("data from db");
+      // console.log(marker.lng, marker.lat);
+      // console.log("$$$$$$$$$$$$$$$$$$$");
 
       new mapboxgl.Marker(customMarker)
       .setLngLat([ marker.lng, marker.lat ])
@@ -132,6 +136,7 @@ export default class extends Controller {
 
 
     getMarkersdata() {
+      console.log("getMarkersdata");
       fetch(`/hugs/${this.hugIdValue}`,
                     {headers: { "contentType": 'application/json',
                     "accept": 'application/json'}})
@@ -139,8 +144,6 @@ export default class extends Controller {
                     .then((data) => {
                       this.markersValue = data
                       this.#addMarkersToMap()
-                      Interval( this.getMarkersdata.bind(this)
-                      , 2000);
                     })
 
 
