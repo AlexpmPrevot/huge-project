@@ -1,12 +1,13 @@
 class User < ApplicationRecord
   geocoded_by :city
-  after_validation :geocode, if: :will_save_change_to_city?
+  after_validation :geocode
   has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
+  after_create :geocode
+  # after_create :set_latlong
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # scope :with_distance_to, ->(point) { select("#{users}.*").select("(#{distance_from_sql(point)}) as distance") }
 
   def currently_logged_in(logged_in = true)
     where(logged_in: logged_in).where("last_request_at > ?", Time.zone.now - timeout_in.seconds)
@@ -24,6 +25,7 @@ class User < ApplicationRecord
     else
       self.avatar = "avatars/Cactus#{(score / 100).floor + 1}.png" unless score > 100 || score < 900
     end
+    self.save
   end
 
   def upgrade_avatar
@@ -32,9 +34,17 @@ class User < ApplicationRecord
     elsif score >= 900
       self.avatar = "avatars/Cactus10.png"
     else
-    level = (score.round(-2) / 100)
-    self.avatar = "avatars/Cactus#{level}.png"
-    save
+      level = (score.round(-2) / 100)
+      self.avatar = "avatars/Cactus#{level}.png"
+      save
     end
   end
+
+  # def set_latlong
+  #   results = Geocoder.search(city).first.coordinates
+  #   self.latitude = results[0]
+  #   self.longitude = results[1]
+  #   self.save
+
+  # end
 end

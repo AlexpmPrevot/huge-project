@@ -2,9 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    #distance_between(lat1, lon1, lat2, lon2, options = {}) ⇒ Object
-    # @users = User.near(params[:longitude, :latitude], 10, order: distance_from([current_user.longitude, current_user.latitude]))
-    current_user.set_avatar
+    current_user.set_avatar if current_user
     @users = User.all
     @users.each do |user|
       user.upgrade_avatar
@@ -20,9 +18,12 @@ class UsersController < ApplicationController
         logged_in: user.logged_in
       }
     end
-    @users = @users.sort_by do |user|
-      current_user.distance_to([user.longitude, user.latitude])
-    end.reverse
+
+    if current_user
+      @users = @users.sort_by do |user|
+        current_user.distance_to([user.longitude, user.latitude])
+      end.reverse
+    end
     respond_to do |format|
       format.html {}
       format.json { render json: @markers.as_json }
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
     @user.upgrade_avatar
     @review = Review.new
     @reviews = Review.all.where(id: [@receiver_id, @sender_id])

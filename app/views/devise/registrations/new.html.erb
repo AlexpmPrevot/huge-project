@@ -1,5 +1,4 @@
 <h2 class="text-center"><strong>Sign up</strong></h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
@@ -19,7 +18,18 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :bio,
+                as: :text,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Describe yourself 😉" }%>
     <%= f.input :avatar_color, as: :color %>
+    <%= f.input :city,
+                wrapper_html: {class: "d-none"},
+                input_html: {value: "107 Cr Balguerie Stuttenberg, 33300 Bordeaux"} %>
+
+
+
 
     <div class="form-actions btn btn-custom-green mb-3">
       <%= f.button :submit, "Sign up", class: "text-white" %>
