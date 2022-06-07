@@ -27,13 +27,14 @@
                   <% end %>
                 </div>
                 <p class="card-text text-light"><%= user.bio %></p>
+
                 <%= link_to 'Hug request', hugs_path(user_id: user.id), method: :post, id: 'idxbtn', class: 'btn btn-color-custom-orange text-light mb-2' %>
                 <% if user.logged_in? %>
                   <p class="card-text"><i>Online</i></p>
                 <% elsif user.last_request_at == nil%>
                   <p class="card-text"><i>Waiting for 1st connexion</i></p>
                 <% else %>
-                  <p class="card-text"><i>Online</i><%= ((Time.now - (user.last_request_at))/60).round %> minutes ago</p>
+                  <p class="card-text"><i>Online</i> <%= ((Time.now - (user.last_request_at))/60).round %> minutes ago</p>
                 <% end %>
               </div>
            </div>
