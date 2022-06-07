@@ -17,6 +17,7 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
@@ -33,7 +34,12 @@ export default class extends Controller {
       })
       );
 
-  }
+      this.map.on('click', (e) => {
+        const selectedFeatures = this.map.queryRenderedFeatures(e.point);
+        console.log(selectedFeatures)
+        if (selectedFeatures != []) this.map.flyTo({center: [e.lngLat.lng, e.lngLat.lat]});
+      })
+    }
 
 
 
@@ -62,7 +68,6 @@ export default class extends Controller {
 
     });
   }
-
 
 
   #fitMapToMarkers() {
