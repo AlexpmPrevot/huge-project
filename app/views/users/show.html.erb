@@ -1,7 +1,7 @@
 <div class="container col-12 col-6 pt-3">
   <h1 class="text-center mb-3 fs-1 text">Profile</h1>
   <div class="border border-dark shadow lg p-3 mb-5 rounded-3 bg-custom-green">
-    <h2 class="text-center fs-1 text mt-3"><strong><%= @user.nickname %></strong></h2>
+    <h2 class="text-center fs-1 text mt-3" id="show"><strong><%= @user.nickname %></strong></h2>
     <div class="justify-content-center p-3 w100">
       <div class="d-flex justify-content-center">
         <div class="avatar-gauge">
@@ -11,9 +11,11 @@
       </div>
     </div>
 
-    <div class="text-center fs-5 text mt-3"><%= @user.biography %></div>
-    <div class="text-center fs-1 text mt-3">
-    <p>Ton score: <strong><%= @user.score %></strong></p>
+
+    <div class="text-center fs-5 text mt-3" id="show-1"><%= @user.bio %></div>
+    <div class="text-center fs-1 text mt-3" id="show-2">
+    <p>Your hugger score: <strong><%= @user.score %></strong></p>
+
     </div>
 
   </div>

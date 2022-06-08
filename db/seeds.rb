@@ -33,6 +33,7 @@ User.create(nickname: 'HuggyCactus',
 
 
 15.times do
+
   nickname = Faker::Sports::Basketball.player
   email = "user#{rand(0..20)}@huge.com"
   avatar_color = '#3D3D3D'
