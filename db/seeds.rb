@@ -17,7 +17,7 @@ User.create(nickname: 'Admin',
             avatar_color: 'green',
             score: 247,
             city: '176 cours Balguerie Stuttenberg, 33000 Bordeaux',
-            bio: Faker::ChuckNorris.fact,
+            biography: Faker::ChuckNorris.fact,
             logged_in: true)
 
 User.create(nickname: 'HuggyCactus',
@@ -26,14 +26,14 @@ User.create(nickname: 'HuggyCactus',
             avatar_color: 'green',
             score: rand(101..590),
             city: '8 rue Joséphine, 33300 Bordeaux',
-            bio: Faker::ChuckNorris.fact,
-            logged_in: true)
+            logged_in: true,
+            biography: Faker::ChuckNorris.fact)
 
 
 
 
 15.times do
-  bio = Faker::ChuckNorris.fact
+
   nickname = Faker::Sports::Basketball.player
   email = "user#{rand(0..20)}@huge.com"
   avatar_color = '#3D3D3D'
@@ -42,19 +42,19 @@ User.create(nickname: 'HuggyCactus',
              "25 rue Mandron, Bordeaux",
              "24 rue de la Course, Bordeaux",
              "132 cours Alsace-Lorraine, Bordeaux",
-             "84 cours de la Marne, Bordeaux",
+             "cours de la Marne, Bordeaux",
              "275 avenue Thiers, Bordeaux",
              "48 cours du Médoc, Bordeaux",
              "18 rue Ferrère, Bordeaux",
-             "162 cours Balguerie Stuttenberg, Bordeaux"][rand(0..10)]
+             "162 cours Balguerie Stuttenberg, Bordeaux"].sample
   User.create(nickname: nickname,
               email: email,
               password: 'secret',
               avatar_color: avatar_color,
               score: rand(101..590),
               city: city,
-              bio: bio,
-              logged_in: [true, false].sample)
+              logged_in: [true, false].sample,
+              biography: Faker::ChuckNorris.fact)
 end
 
 Hug.create(
