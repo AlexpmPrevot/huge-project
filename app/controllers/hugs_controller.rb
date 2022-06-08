@@ -56,6 +56,9 @@ class HugsController < ApplicationController
     redirect_to users_path if @hug.destroy
   end
 
+  def camera
+  end
+
   private
 
   def hug_params
