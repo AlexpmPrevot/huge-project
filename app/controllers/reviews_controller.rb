@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
       update_score(hug.sender)
     end
     @review.save
-    redirect_to users_path
+    redirect_to root_path
   end
 
   private

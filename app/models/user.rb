@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   geocoded_by :city
-  after_validation :geocode
-  has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
   after_create :geocode
-  # after_create :set_latlong
+
+  after_create :set_latlong
+  has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -40,11 +40,11 @@ class User < ApplicationRecord
     end
   end
 
-  # def set_latlong
-  #   results = Geocoder.search(city).first.coordinates
-  #   self.latitude = results[0]
-  #   self.longitude = results[1]
-  #   self.save
+  def set_latlong
+    results = self.geocode
+    self.latitude = results[0]
+    self.longitude = results[1]
+    self.save
 
-  # end
+  end
 end

@@ -19,8 +19,8 @@ class UsersController < ApplicationController
       }
     end
 
-    if current_user
-      @users = @users.sort_by do |user|
+    if current_user && current_user.latitude && current_user.longitude
+      @users = @users.geocoded.sort_by do |user|
         current_user.distance_to([user.longitude, user.latitude])
       end.reverse
     end
@@ -40,7 +40,15 @@ class UsersController < ApplicationController
 
   def set_geoloc
     @user = User.find(params[:id])
-    @user.update(user_params)
+    puts @user.latitude
+    puts @user.longitude
+    if @user.update(user_params)
+      puts "$$$$$$$$$$$$$$$$$$$$$$$OK$$$$$$$$$$$$$$$$$$$$$"
+      puts @user.latitude
+      puts @user.longitude
+    else
+      raise
+    end
   end
 
   private

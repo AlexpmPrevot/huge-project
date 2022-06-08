@@ -13,6 +13,7 @@
 .btn-color-custom-orange {
   background-color: $custom-orange;
   border-color: $custom-orange;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
 .text-custom-yellow {
@@ -76,6 +77,8 @@
   color: #fff;
   font-size: 14px;
   font-weight: bold;
+  text-shadow: 1px 1px black;
+  justify-content: center;
 }
 .user-link:hover {
   color:$custom-orange;
@@ -89,10 +92,10 @@
 }
 
 #pop-up {
-  height: 125px !important;
-  width: 200px !important;
+  height: auto;
+  // width: 200px !important;
   border-radius: 5px;
-  box-shadow: 15px 15px 15px 15px rgba(0,0,0,0.20);
+  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.05);
   padding: 20px;
 }
 
@@ -105,4 +108,21 @@
   @media(max-width : 480px) {
     grid-template-columns: 1fr;
   }
+}
+
+.card-text {
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+}
+
+#show {
+  text-shadow: 1px 1px black;
+}
+
+#show-1 {
+  text-shadow: 1px 1px black;
+}
+
+#show-2 {
+  text-shadow: 1px 1px black;
 }

@@ -1,10 +1,10 @@
 <%= simple_form_for current_user, url: set_geoloc_user_path(current_user), method: :patch, data: { geoloc_target: 'form' }  do |f| %>
     <%= f.input :latitude,
-                     class: "form-control",
+
                      input_html: { data: { geoloc_target: 'latitude'} }
                      %>
     <%= f.input :longitude,
-                     class: "form-control",
+
                      input_html: { data: { geoloc_target: 'longitude'} }
                     %>
     <%= f.button :submit %>
