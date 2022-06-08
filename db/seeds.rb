@@ -33,10 +33,10 @@ User.create(nickname: 'HuggyCactus',
 
 
 15.times do
-  bio = Faker::ChuckNorris.fact,
-  nickname = Faker::Sports::Basketball.player,
-  email = "user#{rand(0..20)}@huge.com",
-  avatar_color = '#3D3D3D',
+  bio = Faker::ChuckNorris.fact
+  nickname = Faker::Sports::Basketball.player
+  email = "user#{rand(0..20)}@huge.com"
+  avatar_color = '#3D3D3D'
   city = [   "175 rue Sainte Catherine, Bordeaux",
              "80 cours de Verdun, Bordeaux",
              "25 rue Mandron, Bordeaux",
