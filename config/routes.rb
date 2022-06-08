@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'user/sessions' }
   root to: 'pages#home'
+  get "hugs/camera", to: "hugs#camera"
   resources :hugs, :users do
     resources :reviews, only: %i[new create]
   end

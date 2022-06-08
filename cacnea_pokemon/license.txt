@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cacnea (Pokemon)
+* source:	https://sketchfab.com/3d-models/cacnea-pokemon-d45fd21db9c74c85bf120e747f6083d2
+* author:	Yandrack (https://sketchfab.com/Yandrack)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cacnea (Pokemon)" (https://sketchfab.com/3d-models/cacnea-pokemon-d45fd21db9c74c85bf120e747f6083d2) by Yandrack (https://sketchfab.com/Yandrack) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
