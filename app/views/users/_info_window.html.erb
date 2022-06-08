@@ -1,11 +1,15 @@
 <div class="mapboxgl-popup text-light">
   <div class="mapboxgl-popup-content" id="pop-up">
+  <div class="mb-2">
     <%=link_to user.nickname, user_path(user), class:'user-link min-xl' %>
+  </div>
+  <div>
     <% if current_user == user %>
       <%= link_to 'Edit profile', edit_user_registration_path, class:'btn btn-custom-gray text-white mb-2' %>
     <% else %>
       <%= link_to 'Hug request', hugs_path(user_id: user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2', id: 'request'%>
     <% end %>
+  </div>
     <% if user.logged_in? %>
       <p class="card-text">Online</p>
     <% elsif user.last_request_at == nil%>
