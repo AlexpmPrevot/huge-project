@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_06_01_112832) do
     t.string "avatar_color", default: "#3D3D3D"
     t.integer "score", default: 0
     t.string "city"
-    t.text "bio"
+    t.text "biography"
     t.float "latitude"
     t.float "longitude"
     t.datetime "last_request_at"
