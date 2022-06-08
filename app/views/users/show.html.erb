@@ -11,20 +11,20 @@
       </div>
     </div>
 
-    <div class="text-center fs-5 text mt-3"><%= @user.bio %></div>
+    <div class="text-center fs-5 text mt-3"><%= @user.biography %></div>
     <div class="text-center fs-1 text mt-3">
-    <p>Your hugger score: <strong><%= @user.score %></strong></p>
+    <p>Ton score: <strong><%= @user.score %></strong></p>
     </div>
 
   </div>
   <div class="d-flex justify-content-center text-center mt-3 mb-5">
     <div data-controller="confirmed-popup" >
       <% if @user != current_user %>
-        <%= link_to 'Hug request', hugs_path(user_id: @user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2 btn-lg', id: 'request'%>
+        <%= link_to 'Demande de Hug', hugs_path(user_id: @user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2 btn-lg', id: 'request'%>
       <% end %>
     </div>
     <% if @user == current_user %>
-      <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-custom-gray btn-lg text-white mb-2 mt-5" %>
+      <%= link_to "Modifier mon profil", edit_user_registration_path, class: "btn btn-custom-gray btn-lg text-white mb-2 mt-5" %>
     <% end %>
   </div>
 </div>
