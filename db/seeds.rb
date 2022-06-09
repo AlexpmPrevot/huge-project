@@ -40,7 +40,6 @@ User.create(nickname: 'CrazyCactus',
 
   nickname = Faker::Sports::Basketball.player
   email = "user#{rand(0..20)}@huge.com"
-  avatar_color = '#3D3D3D'
   city = [   "175 rue Sainte Catherine, Bordeaux",
              "80 cours de Verdun, Bordeaux",
              "25 rue Mandron, Bordeaux",
@@ -57,7 +56,7 @@ User.create(nickname: 'CrazyCactus',
   User.create(nickname: nickname,
               email: email,
               password: 'secret',
-              avatar_color: avatar_color,
+              avatar_color: ["#582C4D", "#21A0A0", "#EFBCD5", "#A61C3C"].sample,
               score: rand(101..590),
               city: city,
               logged_in: [true, false].sample,

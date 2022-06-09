@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   geocoded_by :city
   after_create :geocode
+  after_create :upgrade_avatar
 
-  after_create :set_latlong
+  # after_create :set_latlong
   has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
 
   devise :database_authenticatable, :registerable,
@@ -34,7 +35,7 @@ class User < ApplicationRecord
     elsif score >= 900
       self.avatar = "avatars/Cactus10.png"
     else
-      level = (score.round(-2) / 100)
+      level = (score / 100).floor + 1
       self.avatar = "avatars/Cactus#{level}.png"
       save
     end
