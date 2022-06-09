@@ -26,9 +26,9 @@
                   <h6 class="card-subtitle mb-2 text-light ms-3">Distance: <%= (current_user.distance_to(user) * 1000).round %> m</h6>
                   <% end %>
                 </div>
-                <p class="card-text text-light"><%= user.biography %></p>
+                <p class="card-text text-light text-center"><%= user.biography %></p>
 
-                <%= link_to 'Hug request', hugs_path(user_id: user.id), method: :post, id: 'idxbtn', class: 'btn btn-color-custom-orange text-light mb-2' %>
+                <%= link_to 'Free HUG', hugs_path(user_id: user.id), method: :post, id: 'idxbtn', class: 'btn btn-color-custom-orange btn-lg text-light mb-2' %>
                 <% if user.logged_in? %>
                   <p class="card-text"><i>En ligne</i></p>
                 <% elsif user.last_request_at == nil%>
