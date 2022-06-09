@@ -30,7 +30,6 @@ export default class extends Controller {
     ).then((response) => {
       return response.json()
     }).then((data) => {
-      console.log(data)
      return data.routes[0]
 
     }).then((route) => {
@@ -136,7 +135,6 @@ export default class extends Controller {
 
 
     getMarkersdata() {
-      console.log("getMarkersdata");
       fetch(`/hugs/${this.hugIdValue}`,
                     {headers: { "contentType": 'application/json',
                     "accept": 'application/json'}})
