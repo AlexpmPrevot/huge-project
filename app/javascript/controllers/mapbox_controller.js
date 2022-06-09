@@ -36,7 +36,6 @@ export default class extends Controller {
 
       this.map.on('click', (e) => {
         const selectedFeatures = this.map.queryRenderedFeatures(e.point);
-        console.log(selectedFeatures)
         if (selectedFeatures != []) this.map.flyTo({center: [e.lngLat.lng, e.lngLat.lat]});
       })
     }

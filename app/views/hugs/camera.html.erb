@@ -1,18 +1,6 @@
-<iframe frameborder="0"></iframe>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <body style="margin : 0px; overflow: hidden;">
-    <a-scene arjs>
-      <a-marker preset="hiro">
-        <a-entity
-          response-type="arraybuffer"
-          rotation="-90 0 0"
-          position="-2 0.3 -2"
-          scale="0.03 0.02 0.02"
-          gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githubusercontent.com/CesarVictor/ar-huge-project/main/cactus_walk/scene.gltf"
-        ></a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
+<div data-controller='camera'>
+ <div style= "position: relative;">
+  <%= link_to 'Review hug', :back,class: "btn btn-color-custom-orange text-light mb-2 btn-lg", style: "position: absolute; top: 20px; left: 20px; z-index: 9999;" %>
+  <iframe frameborder="0" id="camera" src='<%="#{request.protocol}#{request.env['HTTP_HOST']}/ar.html"%>'></iframe>
+ </div>
+</div>

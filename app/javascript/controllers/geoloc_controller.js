@@ -2,12 +2,15 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ['form', 'latitude', 'longitude']
+  static targets = ['form', 'latitude', 'longitude', 'navbar']
   static values = {
     userid: String
   }
 
   connect() {
+
+
+
     this.getGeoloc()
     let duration
     if (window.location.pathname.toString().includes("/hugs/")) {
@@ -15,11 +18,18 @@ export default class extends Controller {
       } else {
         duration = 30000
       }
+
     setInterval(this.getGeoloc.bind(this) , duration);
-  }
+    // if (window.location.pathname.toString().includes("/camera")) {
+    //   this.navbarTarget.classList.add('d-none')
+    //   setTimeout(window.location.reload(), 1000);
+    // }
+
+
+    }
+
 
   getGeoloc() {
-  console.log("getGeoloc");
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
@@ -27,10 +37,7 @@ export default class extends Controller {
       this.latitudeTarget.value = lat
       this.longitudeTarget.value = long
       this.formTarget.submit()
-      console.log("*******************");
-      console.log("data from navigator");
-      console.log(this.latitudeTarget.value);
-      console.log("*******************");
     })
   }
+
 }
