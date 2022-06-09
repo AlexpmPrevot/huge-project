@@ -34,6 +34,7 @@ export default class extends Controller {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
 
+
       this.latitudeTarget.value = lat
       this.longitudeTarget.value = long
       this.formTarget.submit()

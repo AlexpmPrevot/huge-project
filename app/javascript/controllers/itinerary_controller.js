@@ -85,7 +85,7 @@ export default class extends Controller {
       for (const step of steps) {
         tripInstructions += `<li>${step.maneuver.instruction}</li>`;
       }
-      instructions.innerHTML = `<p style="color: black;"><strong>Trip duration: ${Math.floor(
+      instructions.innerHTML = `<p style="color: black;"><strong>Temps de trajet: ${Math.floor(
         route.duration / 60
       )} min 🚶🏻</strong></p>`;
     }
