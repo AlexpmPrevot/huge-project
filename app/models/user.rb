@@ -39,4 +39,8 @@ class User < ApplicationRecord
     end
   end
 
+  # def set_coordonates
+  #   self.latitude ||= 44.859275
+  #   self.longitude ||= -0.5658044
+  # end
 end
