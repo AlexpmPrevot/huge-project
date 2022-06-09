@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   geocoded_by :city
-  after_create :geocode
+  after_create :set_coordonates
 
   has_many :reviews, class_name: "Review", foreign_key: :reviewer_id
 
@@ -39,8 +39,12 @@ class User < ApplicationRecord
     end
   end
 
-  # def set_coordonates
-  #   self.latitude ||= 44.859275
-  #   self.longitude ||= -0.5658044
-  # end
+  def set_coordonates
+    coordonates = self.geocode
+    if coordonates&.size == 2
+      self.latitude ||= coordonates[0]
+      self.longitude ||= coordonates[1]
+    end
+    self.save
+  end
 end
