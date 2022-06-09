@@ -7,7 +7,7 @@
     <% if current_user == user %>
       <%= link_to 'Edit profile', edit_user_registration_path, class:'btn btn-custom-gray text-white mb-2' %>
     <% else %>
-      <%= link_to 'Hug request', hugs_path(user_id: user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2', id: 'request'%>
+      <%= link_to 'Free HUG', hugs_path(user_id: user), method: :post, class: 'btn btn-color-custom-orange text-white mb-2', id: 'request'%>
     <% end %>
   </div>
     <% if user.logged_in? %>
