@@ -11,28 +11,32 @@ User.destroy_all
 
 
 
-User.create(nickname: 'Admin',
+User.create(nickname: 'Fluffy Cactus',
             email: 'admin@huge.com',
             password: 'secret',
-            avatar_color: 'green',
             score: 247,
             city: '176 cours Balguerie Stuttenberg, 33000 Bordeaux',
-            biography: Faker::ChuckNorris.fact,
+            biography: "Faites des Hugs, pas la guerre!!!",
             logged_in: true)
 
 User.create(nickname: 'HuggyCactus',
-            email: 'huggycactus@huge.com',
+            email: 'admin2@huge.com',
             password: 'secret',
-            avatar_color: 'green',
             score: rand(101..590),
             city: '8 rue Joséphine, 33300 Bordeaux',
             logged_in: true,
-            biography: Faker::ChuckNorris.fact)
+            biography: "Dans la vie, y'a des cactus...")
+
+User.create(nickname: 'CrazyCactus',
+            email: 'admin3@huge.com',
+            password: 'secret',
+            score: rand(101..590),
+            city: '17 rue Surson, 33300 Bordeaux',
+            logged_in: true,
+            biography: "Dans la vie, y'a des cactus...")
 
 
-
-
-15.times do
+20.times do
 
   nickname = Faker::Sports::Basketball.player
   email = "user#{rand(0..20)}@huge.com"
@@ -46,7 +50,10 @@ User.create(nickname: 'HuggyCactus',
              "275 avenue Thiers, Bordeaux",
              "48 cours du Médoc, Bordeaux",
              "18 rue Ferrère, Bordeaux",
-             "162 cours Balguerie Stuttenberg, Bordeaux"].sample
+             "162 cours Balguerie Stuttenberg, Bordeaux",
+             "5 cours du Médoc, Bordeaux",
+             "18 rue Leyteire, Bordeaux",
+             "40 cours de la Martinique, Bordeaux"].sample
   User.create(nickname: nickname,
               email: email,
               password: 'secret',
