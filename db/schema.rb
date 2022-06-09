@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_112832) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "nickname"
-    t.string "avatar_color"
-    t.integer "score"
+    t.string "avatar_color", default: "#3D3D3D"
+    t.integer "score", default: 0
     t.string "city"
     t.text "biography"
     t.float "latitude"
